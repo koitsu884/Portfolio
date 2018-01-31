@@ -1,0 +1,152 @@
+﻿@model Portfolio.Models.IndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="first_intro" class="jumbotron">
+    <h1>Kazunori Hayashi</h1>
+    <h3>A programmer with various experience</h3>
+    <p>@Html.Raw(Model.Introduction)</p>
+</div>
+
+
+
+<div id="scroll"><!-- Debug only -->
+
+</div>
+
+<div id="haniwa">
+    <div class="haniwa_message" data-400="transform:translate(0%,0);" data-500="transform:translate(120%,0);">
+    <p>Hello, I'm Kazu's friend.</p>
+    <p>I know him well.. so I will tell you details which is not on the main page.</p>
+    </div>
+    <div class="haniwa_message" data-500="transform:translate(-120%,0);" data-600="transform:translate(0%,0);" data-1000="transform:translate(0%,0);" data-1100="transform:translate(120%,0);">
+        <p>As you can see, PHP and MySql are core skills as he used to be PHP developer.</p>
+        <p>But he used C# at previous work as well, also has been studying ASP.NET at Industory Connect and by myself.</p>
+    </div>
+    <div class="haniwa_message" data-0="transform:translate(-120%,0);" data-1000="transform:translate(-120%,0);"data-1500="transform:translate(0%,0);">
+    <p>He is crazy</p>
+    </div>
+</div>
+@{ 
+    int anime_start = 300;
+    int anime_start_skills = anime_start;
+    int animation_time = 200;
+    int wait_time = 400;
+    int anime_start_end = anime_start + animation_time;
+    int anime_end_start = anime_start_end + wait_time;
+    int anime_end_end = anime_end_start + animation_time;
+    int skill_cnt = 0;
+    int anime_offset = 20;
+    int second_bg_time = anime_end_start;
+}
+ 
+<div class="animatedTitle" data-0="top:-10%;background-color:#196FFF;" @("data-" + anime_start)="top:-10%;" @("data-" + anime_start_end)="top:0%;" @("data-" + anime_end_start)="top:0%;" @("data-" + anime_end_end)="top:120%;">Skills</div>
+<div id="Skills" class="jumbotron animatedSection" data-0="left:120%;top:100%;" @("data-" + anime_start)="left:120%;top:100%;" @("data-" + anime_start_end)="left:0%;top:20vh;" @("data-" + anime_end_start)="left:0%;top:20vh;" @("data-" + anime_end_end)="left:-120%;top:10%;">
+    <table class="table">
+        @foreach (var skill in Model.SkillSet)
+        {
+            <tr><td style="max-width:100px; width:20%;">@skill.Key</td><td><div class="progress"><div class="progress-bar" @("data-" + (anime_start_end + skill_cnt * anime_offset))="width:0%" @("data-" + (anime_start_end + (skill_cnt * anime_offset) + anime_offset))="width: @skill.Value%;"></div></div></td></tr>
+            skill_cnt++;
+        }
+        <!--
+        <tr><td style="max-width:100px; width:20%;">C#</td><td><div class="progress"><div class="progress-bar" data-100="width:0%" data-200="width: 70%;"></div></div></td></tr>
+        <tr><td>ASP.NET</td><td><div class="progress"><div class="progress-bar" data-120="width:0%" data-220="width: 60%;"></div></div></td></tr>
+        <tr><td>SQL Server</td><td><div class="progress"><div class="progress-bar" data-140="width:0%" data-240="width: 60%;"></div></div></td></tr>
+        <tr><td>Javascript,jQuery</td><td><div class="progress"><div class="progress-bar" data-160="width:0%" data-260="width: 60%;"></div></div></td></tr>
+        <tr><td>Knockout JS</td><td><div class="progress"><div class="progress-bar" data-180="width:0%" data-280="width: 50%;"></div></div></td></tr>
+        <tr><td>PHP</td><td><div class="progress"><div class="progress-bar" data-200="width:0%" data-300="width: 80%;"></div></div></td></tr>
+        <tr><td>MySQL</td><td><div class="progress"><div class="progress-bar" data-220="width:0%" data-320="width: 70%;"></div></div></td></tr>
+        <tr><td>C++</td><td><div class="progress"><div class="progress-bar" data-200="width:0%" data-300="width: 70%;"></div></div></td></tr>
+            -->
+    </table>
+</div>
+@{ 
+    int history_wait_time = 100;
+    anime_start = anime_end_end + 100;
+    animation_time = 200;
+    wait_time = (2018-2007) * history_wait_time;
+    anime_start_end = anime_start + animation_time;
+    anime_end_start = anime_start_end + wait_time;
+    anime_end_end = anime_end_start + animation_time;
+    int third_bg_time = anime_end_start;
+}
+
+<div class="animatedTitle" data-0="left:120%;top:0%;background-color:#196F3D;" @("data-" + anime_start)="left:120%;top:100%;" @("data-" + anime_start_end)="left:0%;top:0%;" @("data-" + anime_end_start)="left:0%;top:0%;" @("data-" + anime_end_end)="top:-20%;">Breaf History</div>
+<div id="WorkExperience" class="jumbotron animatedSection" @("data-" + anime_start)="top:100%;" @("data-" + anime_start_end)="top:20vh;" @("data-" + anime_end_start)="top:20vh;" @("data-" + anime_end_end)="top:-100%;">
+    <div id="history_year">
+        @{ 
+            int history_start = anime_start_end;
+
+
+            Dictionary<int, int> animeTimeDictionary = new Dictionary<int,int>();
+
+        }
+        @for (int year = 2007; year <= 2018; year++)
+        {
+            <span data-0="font-weight: normal; color:black;" @("data-" + history_start)="font-weight: bold; color: red;" @("data-"+(history_start + history_wait_time))="font-weight: normal; color:black;">-@year-</span>
+            animeTimeDictionary.Add( year, history_start);
+            history_start += history_wait_time;
+        }
+    </div>
+
+    <div data-0="display:none" @("data-" + animeTimeDictionary[2007])="display:block" @("data-" + animeTimeDictionary[2008])="display:none">
+        <h2>Worked at Now Production in Japan as Game Programmer</h2>
+        <ul>
+            <li>Develop game software for Nintendo DS and Wii using C++, C,  Code worrier (IDE)</li>
+            <li>Develop support tools of Windows form application, using MFC, Visual studio</li>
+        </ul>
+    </div>
+    <div data-0="display:none" @("data-" + animeTimeDictionary[2008])="display:block" @("data-" + animeTimeDictionary[2010])="display:none">
+        <h2>Worked at Advanced Information Designe as System Analyst</h2>
+        <ul>
+            <li>Maintain bank system, using COBOL, PL1</li>
+            <li>Develop and improve analysis tool using Visual basic, Excel VBA, Java, Visual Studio</li>
+        </ul>
+    </div>
+    <div data-0="display:none" @("data-" + animeTimeDictionary[2010])="display:block" @("data-" + animeTimeDictionary[2013])="display:none">
+        <h2>Working holiday in NZ and AUS..</h2>
+    </div>
+    <div data-0="display:none" @("data-" + animeTimeDictionary[2013])="display:block" @("data-" + animeTimeDictionary[2014])="display:none">
+        <h2>Backed to NZ, started studying for IT at Whitireia</h2>
+    </div>
+    <div data-0="display:none" @("data-" + animeTimeDictionary[2014])="display:block" @("data-" + animeTimeDictionary[2018])="display:none">
+        <h2>Worked at ezyVet as Fullstack Developer</h2>
+        <ul>
+            <li>Data conversion – extraction of varies customer’s data, then converting the data into ezyVet usable format using C#, PHP, Java and database system including MSSQL, MySQL, 4D, SQL Anywhere, even binary data - depends on customer’s system</li>
+            <li>Improve ezyVet system using PHP and JavaScript. (Adding new features, bug fixes) </li>
+            <li>Built Eftpos integration - bidirectional communication between ezyVet and Eftpos terminal</li>
+            <li>Built SMS integration – Allows users to send SMS from ezyVet. Improved portal site to receive all replies and to notify appropriate customer’s site. </li>
+            <li>Built Diagnostic (Lab) integration – Allows users to send request to lab, and labs to send back the results using ezyVet API and AWS lambda.</li>
+        </ul>
+    </div>
+    <div data-0="display:none" @("data-" + animeTimeDictionary[2018])="display:block">
+        <p>Moved to Wellington, looking for a job</p>
+    </div>
+</div>
+
+<div class="fixedBg bgBlue" data-0="display:block;" @("data-" + second_bg_time)="display:none;"></div>
+<div class="fixedBg bgGreen" data-0="display:none;" @("data-" + second_bg_time)="display:block;"  @("data-" + third_bg_time)="display:none;"></div>
+<div class="fixedBg bgYellow" data-0="display:none;" @("data-" + third_bg_time)="display:block;"></div>
+
+<div id="Links" class="jumbotron"  style="top:@(anime_end_end + 500)px;">
+    <h2>Contact</h2>
+    <ul class="list-inline">
+        <li>Github</li>
+        <li>Email</li>
+    </ul>
+</div>
+
+@section scripts{
+     <script type="text/javascript">
+         $(function () {
+             skrollr.init();
+             $(window).scroll(function () {
+                 var y = jQuery(this).scrollTop();
+                 $("#scroll").text("スクロール量：" + y);
+             });
+         });
+
+
+     </script>
+ }

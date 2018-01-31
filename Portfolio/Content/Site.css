@@ -1,0 +1,172 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+.container {
+    max-width: 100%;
+    padding:0;
+}
+.body-content{
+    margin:0;
+    padding:0;
+}
+.body-content div{
+    margin:0;
+}
+
+footer{
+    position:fixed;
+    width:100%;
+    height:30px;
+    background-color:black;
+    z-index:100;
+    bottom:0;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+@media (max-width: 768px) {
+    #haniwa {
+        display:none;
+    }
+}
+
+#scroll{
+    bottom:10px;
+    right:10px;
+    width:100px;
+    position: fixed;
+}
+
+#haniwa {
+    width: 300px;
+    height: 318px;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    overflow: hidden;
+    background-image: url('Images/haniwa.png');
+    z-index: 50;
+}
+
+.haniwa_message {
+    position:absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.brank{
+    height:400px;
+}
+
+.fixedBg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0%;
+    z-index: -10;
+    background-size: cover;
+}
+
+.bgBlue {
+    background-image: url('Images/blue0045.png');
+}
+
+.bgGreen {
+    background-image: url('Images/green0099.png');
+}
+
+.bgYellow {
+    background-image: url('Images/yellow0001.png');
+}
+
+.section{
+    height:100vh;
+}
+
+.animatedTitle {
+    height: 20vh;
+    width: 100%;
+    position: fixed;
+    padding-top: 50px;
+    padding-left: 20px;
+    z-index: -5;
+    font-size: 7vh;
+    color: white;
+}
+
+.animatedSection {
+    height: 80vh;
+    position: fixed;
+    width: 100%;
+    z-index: 30;
+}
+
+@media (min-width: 769px) {
+    #first_intro,
+    .animatedSection {
+        padding-right: 350px;
+    }
+}
+
+
+#first_intro {
+    height:500px;
+}
+
+#WorkExperience {
+    background-color: aliceblue;
+}
+
+#Links {
+    position:absolute;
+    width:100%;
+    height:400px;
+}
+
+.fixedbg-blue {
+    background-image: url('Images/blue0045.png');
+    background-attachment: fixed;
+    background-size: cover;
+}
+/*
+.balloon1 {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+}
+
+.balloon1:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid #e0edff;
+}
+
+.balloon1 p {
+    margin: 0;
+    padding: 0;
+}*/
